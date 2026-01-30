@@ -66,3 +66,21 @@ categories.forEach(btn => {
 });
 
 render();
+const navButtons = document.querySelectorAll('.nav');
+const pages = {
+    menu: document.getElementById('menuPage'),
+    feedback: document.getElementById('feedbackPage'),
+    bonus: document.getElementById('bonusPage'),
+    about: document.getElementById('aboutPage')
+};
+
+navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        navButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        Object.values(pages).forEach(p => p.classList.remove('active'));
+        pages[btn.dataset.page].classList.add('active');
+    });
+});
+
