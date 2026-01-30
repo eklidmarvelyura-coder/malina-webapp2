@@ -12,61 +12,46 @@
 
 <div class="app">
 
+    <!-- Боковая навигация -->
     <aside class="sidebar">
-        <button class="nav active" data-page="menu">🍽 Меню</button>
-        <button class="nav" data-page="feedback">💬 Обратная связь</button>
-        <button class="nav" data-page="bonus">🎁 Бонусы</button>
-        <button class="nav" data-page="about">ℹ О нас</button>
+        <button id="navMenu" class="nav active">🍽 Меню</button>
+        <button id="navFeedback" class="nav">💬 Обратная связь</button>
     </aside>
 
     <main class="content">
 
+        <!-- Шапка -->
         <header class="header">
             <div>
                 <h1>🍓 Malina Cafe</h1>
                 <p>Доставка кофе и выпечки</p>
             </div>
+
             <div class="cart">
-                🛒 <span id="cartCount">0</span>
+                🛒 <span id="cartSum">0 ฿</span>
             </div>
         </header>
 
-        <section id="menuPage" class="page active">
-            <div class="categories">
-                <button class="category active" data-category="all">Все</button>
-                <button class="category" data-category="coffee">Кофе</button>
-                <button class="category" data-category="bakery">Выпечка</button>
-            </div>
-
-            <section id="menu" class="menu"></section>
+        <!-- СТРАНИЦА МЕНЮ -->
+        <section id="menuPage">
+            <div id="products" class="menu"></div>
         </section>
 
-        <section id="feedbackPage" class="page">
-    <h2>Обратная связь</h2>
+        <!-- СТРАНИЦА ОБРАТНОЙ СВЯЗИ -->
+        <section id="feedbackPage" style="display:none">
+            <h2>Обратная связь</h2>
 
-    <textarea id="feedbackText" placeholder="Напишите ваш отзыв или предложение"></textarea>
+            <textarea
+                id="feedbackText"
+                placeholder="Напишите ваш отзыв или предложение"
+            ></textarea>
 
-    <button id="sendFeedback">Отправить</button>
-
-    <p id="feedbackStatus"></p>
-</section>
-
-
-        <section id="bonusPage" class="page">
-            <h2>Бонусы</h2>
-            <p>Здесь будут ваши бонусы</p>
-        </section>
-
-        <section id="aboutPage" class="page">
-            <h2>О кафе</h2>
-            <p>Malina Cafe — уютное место с лучшим кофе</p>
+            <button id="sendFeedback">Отправить</button>
         </section>
 
     </main>
-
 </div>
 
 <script src="script.js"></script>
 </body>
-
 </html>
