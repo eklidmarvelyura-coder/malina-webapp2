@@ -52,16 +52,6 @@ function changeCount(id, delta) {
     render(document.querySelector('.category.active').dataset.category);
 }
 
-function updateCartCount() {
-    let sum = 0;
-
-    for (const id in cart) {
-        const product = products.find(p => p.id == id);
-        sum += product.price * cart[id];
-    }
-
-    cartCount.textContent = sum + ' ฿';
-}
 
 categories.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -70,7 +60,7 @@ categories.forEach(btn => {
         render(btn.dataset.category);
     });
 });
-
+render();
 
 const navButtons = document.querySelectorAll('.nav');
 const pages = {
@@ -109,4 +99,15 @@ feedbackBtn.addEventListener('click', () => {
     feedbackStatus.style.color = 'green';
     feedbackText.value = '';
 });
-render();
+function updateCartCount() {
+    let sum = 0;
+
+    for (const id in cart) {
+        const product = products.find(p => p.id == id);
+        if (product) {
+            sum += product.price * cart[id];
+        }
+    }
+
+    cartCount.textContent = sum + ' ฿';
+}
