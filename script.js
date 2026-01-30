@@ -2,6 +2,7 @@ const tg = window.Telegram.WebApp;
 const cart = {};
 const cartCount = document.getElementById('cartCount');
 
+
 tg.ready();
 
 const products = [
@@ -12,8 +13,7 @@ const products = [
     { id: 5, name: 'Пирожок с вишней', price: 90, category: 'bakery' }
 ];
 
-const menu = document.getElementById('menu');
-const categories = document.querySelectorAll('.category');
+
 
 function render(category = 'all') {
     menu.innerHTML = '';
@@ -29,7 +29,7 @@ function render(category = 'all') {
         card.className = 'card';
         card.innerHTML = `
             <h3>${p.name}</h3>
-            <div class="price">${p.price} ₽</div>
+            <div class="price">${p.price} ฿</div>
 
             <div class="controls">
                 <button onclick="changeCount(${p.id}, -1)">−</button>
@@ -53,8 +53,14 @@ function changeCount(id, delta) {
 }
 
 function updateCartCount() {
-    const total = Object.values(cart).reduce((a, b) => a + b, 0);
-    cartCount.textContent = total;
+    let sum = 0;
+
+    for (const id in cart) {
+        const product = products.find(p => p.id == id);
+        sum += product.price * cart[id];
+    }
+
+    cartCount.textContent = sum + ' ฿';
 }
 
 categories.forEach(btn => {
@@ -83,4 +89,23 @@ navButtons.forEach(btn => {
         pages[btn.dataset.page].classList.add('active');
     });
 });
+const feedbackBtn = document.getElementById('sendFeedback');
+const feedbackText = document.getElementById('feedbackText');
+const feedbackStatus = document.getElementById('feedbackStatus');
 
+feedbackBtn.addEventListener('click', () => {
+    const text = feedbackText.value.trim();
+
+    if (!text) {
+        feedbackStatus.textContent = 'Введите текст';
+        feedbackStatus.style.color = 'red';
+        return;
+    }
+
+    // пока просто имитация отправки
+    console.log('Отзыв:', text);
+
+    feedbackStatus.textContent = 'Спасибо за отзыв!';
+    feedbackStatus.style.color = 'green';
+    feedbackText.value = '';
+});
