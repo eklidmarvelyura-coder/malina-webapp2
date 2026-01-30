@@ -1,4 +1,7 @@
 const tg = window.Telegram.WebApp;
+const cart = {};
+const cartCount = document.getElementById('cartCount');
+
 tg.ready();
 
 const products = [
@@ -20,14 +23,38 @@ function render(category = 'all') {
         : products.filter(p => p.category === category);
 
     filtered.forEach(p => {
+        const count = cart[p.id] || 0;
+
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
             <h3>${p.name}</h3>
             <div class="price">${p.price} ₽</div>
+
+            <div class="controls">
+                <button onclick="changeCount(${p.id}, -1)">−</button>
+                <span>${count}</span>
+                <button onclick="changeCount(${p.id}, 1)">+</button>
+            </div>
         `;
         menu.appendChild(card);
     });
+}
+
+function changeCount(id, delta) {
+    cart[id] = (cart[id] || 0) + delta;
+
+    if (cart[id] <= 0) {
+        delete cart[id];
+    }
+
+    updateCartCount();
+    render(document.querySelector('.category.active').dataset.category);
+}
+
+function updateCartCount() {
+    const total = Object.values(cart).reduce((a, b) => a + b, 0);
+    cartCount.textContent = total;
 }
 
 categories.forEach(btn => {
