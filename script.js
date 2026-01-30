@@ -71,7 +71,7 @@ categories.forEach(btn => {
     });
 });
 
-render();
+
 const navButtons = document.querySelectorAll('.nav');
 const pages = {
     menu: document.getElementById('menuPage'),
@@ -109,3 +109,4 @@ feedbackBtn.addEventListener('click', () => {
     feedbackStatus.style.color = 'green';
     feedbackText.value = '';
 });
+render();
