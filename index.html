@@ -10,25 +10,58 @@
 </head>
 <body>
 
-<header>
-   <div>
-        <h1>🍓 Malina Cafe</h1>
-        <p>Доставка кофе и выпечки</p>
-    </div>
+<div class="app">
 
-    <div class="cart">
-        🛒 <span id="cartCount">0</span>
-    </div>
-</header>
+    <aside class="sidebar">
+        <button class="nav active" data-page="menu">🍽 Меню</button>
+        <button class="nav" data-page="feedback">💬 Обратная связь</button>
+        <button class="nav" data-page="bonus">🎁 Бонусы</button>
+        <button class="nav" data-page="about">ℹ О нас</button>
+    </aside>
 
-<section class="categories">
-    <button class="category active" data-category="all">Все</button>
-    <button class="category" data-category="coffee">Кофе</button>
-    <button class="category" data-category="bakery">Выпечка</button>
-</section>
+    <main class="content">
 
-<section id="menu" class="menu"></section>
+        <header class="header">
+            <div>
+                <h1>🍓 Malina Cafe</h1>
+                <p>Доставка кофе и выпечки</p>
+            </div>
+            <div class="cart">
+                🛒 <span id="cartCount">0</span>
+            </div>
+        </header>
+
+        <section id="menuPage" class="page active">
+            <div class="categories">
+                <button class="category active" data-category="all">Все</button>
+                <button class="category" data-category="coffee">Кофе</button>
+                <button class="category" data-category="bakery">Выпечка</button>
+            </div>
+
+            <section id="menu" class="menu"></section>
+        </section>
+
+        <section id="feedbackPage" class="page">
+            <h2>Обратная связь</h2>
+            <p>Скоро здесь будет форма</p>
+        </section>
+
+        <section id="bonusPage" class="page">
+            <h2>Бонусы</h2>
+            <p>Здесь будут ваши бонусы</p>
+        </section>
+
+        <section id="aboutPage" class="page">
+            <h2>О кафе</h2>
+            <p>Malina Cafe — уютное место с лучшим кофе</p>
+        </section>
+
+    </main>
+
+</div>
 
 <script src="script.js"></script>
 </body>
+
 </html>
+
