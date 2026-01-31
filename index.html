@@ -14,40 +14,71 @@
 
     <!-- Боковая навигация -->
     <aside class="sidebar">
-        <button id="navMenu" class="nav active">🍽 Меню</button>
-        <button id="navFeedback" class="nav">💬 Обратная связь</button>
-    </aside>
+    <button id="navMenu" class="nav active">
+        <span class="nav-icon">🍽</span>
+        <span class="nav-label">Меню</span>
+    </button>
+     <button id="navCart" class="nav active">
+        <span class="nav-icon">🛒</span>
+        <span class="nav-label">Корзина</span>
+    </button>
+    <button id="navFeedback" class="nav active">
+        <span class="nav-icon">💬</span>
+        <span class="nav-label">Обратная связь</span>
+    </button>
+    <button id="navAbout" class="nav active">
+        <span class="nav-icon">ℹ</span>
+        <span class="nav-label"> О нас</span>
+    </button>
+    
+    <div class="sidebar-cart">
+    <div class="cart-icon">🛒</div>
+    <div id="cartSum" class="cart-sum">0 ฿</div>
+</div>
+
+</aside>
 
     <main class="content">
 
         <!-- Шапка -->
         <header class="header">
             <div>
-                <h1>🍓 Malina Cafe</h1>
+                <h1>🍓 Malina Cafe        </h1>
                 <p>Доставка кофе и выпечки</p>
             </div>
 
-            <div class="cart">
-                🛒 <span id="cartSum">0 ฿</span>
-            </div>
+            
         </header>
 
         <!-- СТРАНИЦА МЕНЮ -->
         <section id="menuPage">
             <div id="products" class="menu"></div>
+            <button class="order-btn">Оформить заказ</button>
         </section>
 
+        <!-- СТРАНИЦА Корзины  -->
+            <section id="cartPage">
+            <div id="products" class="menu"></div>
+        </section>
+        <!-- СТРАНИЦА О НАС -->
+        <section id="aboutPage" style="display:none">
+            <h2>О нас</h2>
+            <p>Добро пожаловать в Malina Cafe! Мы предлагаем свежий кофе и вкусную выпечку с доставкой прямо к вам домой.</p>
+            <p>Наше меню включает разнообразные сорта кофе, а также свежие круассаны, маффины и другие лакомства.</p>
+            <p>Мы стремимся обеспечить наших клиентов качественным обслуживанием и вкусной продукцией.</p>
+            </section>
         <!-- СТРАНИЦА ОБРАТНОЙ СВЯЗИ -->
         <section id="feedbackPage" style="display:none">
             <h2>Обратная связь</h2>
 
             <textarea
                 id="feedbackText"
-                placeholder="Напишите ваш отзыв или предложение"
+                placeholder="Напишите ваше замечание или предложение"
             ></textarea>
 
             <button id="sendFeedback">Отправить</button>
         </section>
+        
 
     </main>
 </div>
