@@ -3,12 +3,38 @@ console.log('JS LOADED');
 const tg = window.Telegram.WebApp;
 tg.ready();
 
-// ---------- ДАННЫЕ ----------
+// ---------- ДАННЫЕ ПРОДУКТЫ МЕНЮ----------
 const products = [
-    { id: 1, name: 'Американо', price: 80, category: 'coffee' },
-    { id: 2, name: 'Капучино', price: 150, category: 'coffee' },
-    { id: 3, name: 'Пирожок с капустой', price: 80, category: 'bakery' }
+    {
+        id: 1,
+        name: 'Американо',
+        price: 60,
+        category: 'coffee',
+        description: 'Классический чёрный кофе'
+    },
+    {
+        id: 2,
+        name: 'Капучино',
+        price: 65,
+        category: 'coffee',
+        description: 'Кофе с молочной пенкой'
+    },
+    {
+        id: 3,
+        name: 'Пирожок с капустой',
+        price: 50,
+        category: 'bakery',
+        description: 'Домашняя выпечка'
+    },
+    {
+        id: 4,
+        name: 'Маффин с черникой',
+        price: 70,
+        category: 'bakery',
+        description: 'Вкусный маффин с ягодами'
+    }
 ];
+
 
 let cart = {};
 
@@ -24,15 +50,54 @@ const sendFeedbackBtn = document.getElementById('sendFeedback');
 function showPage(page) {
     menuPage.style.display = 'none';
     feedbackPage.style.display = 'none';
+    document.getElementById('cartPage').style.display = 'none';
+    document.getElementById('aboutPage').style.display = 'none';
 
     if (page === 'menu') menuPage.style.display = 'block';
     if (page === 'feedback') feedbackPage.style.display = 'flex';
+    if (page === 'cart') document.getElementById('cartPage').style.display = 'block';
+    if (page === 'about') document.getElementById('aboutPage').style.display = 'block';
 }
 
 document.getElementById('navMenu').onclick = () => showPage('menu');
 document.getElementById('navFeedback').onclick = () => showPage('feedback');
+document.getElementById('navCart').onclick = () => showPage('cart');
+document.getElementById('navAbout').onclick = () => showPage('about');
+// ---------- Алерт вызова описания----------
+window.openProduct = function(id) {
+    const p = products.find(x => x.id === id);
+    alert(`${p.name}\n\n${p.description}`);
+};
 
+
+
+// ---------- ОБРАБОТЧИКИ КЛИКОВ ПО КАРТОЧКАМ ----------
+productsContainer.addEventListener('click', (event) => {
+    const target = event.target;
+    
+    // 1. Проверяем нажатие на кнопку "Минус"
+    if (target.classList.contains('btn-minus')) {
+        const id = target.dataset.id;
+        removeFromCart(id);
+        return; // Прерываем выполнение, чтобы не сработал openProduct
+    }
+
+    // 2. Проверяем нажатие на кнопку "Плюс"
+    if (target.classList.contains('btn-plus')) {
+        const id = target.dataset.id;
+        addToCart(id);
+        return; // Прерываем выполнение
+    }
+
+    // 3. Если нажали не на кнопку, а на саму карточку (или её содержимое)
+    const card = target.closest('.card');
+    if (card) {
+        const id = card.dataset.id;
+        openProduct(id);
+    }
+});
 // ---------- РЕНДЕР МЕНЮ ----------
+
 function renderProducts() {
     productsContainer.innerHTML = '';
 
@@ -40,17 +105,16 @@ function renderProducts() {
         const count = cart[p.id] || 0;
 
         productsContainer.innerHTML += `
-            <div class="card">
-                <h3>${p.name}</h3>
-                <div class="price">${p.price} ฿</div>
-
-                <div class="controls">
-                    <button onclick="removeFromCart(${p.id})">−</button>
-                    <span>${count}</span>
-                    <button onclick="addToCart(${p.id})">+</button>
-                </div>
-            </div>
-        `;
+    <div class="card" onclick="openProduct(${p.id})">
+    <h3>${p.name}</h3>
+    <div class="price">${p.price} ฿</div>
+    <div class="controls">
+        <button onclick="event.stopPropagation(); removeFromCart(${p.id})">−</button>
+        <span>${count}</span>
+        <button onclick="event.stopPropagation(); addToCart(${p.id})">+</button>
+    </div>  
+</div>
+`;
     });
 }
 
