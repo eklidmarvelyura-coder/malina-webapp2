@@ -5,23 +5,19 @@
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
     color: #333;
-    line-height: 1.6;
 }
 
 /* Хедер */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     z-index: 100;
 }
 
@@ -29,29 +25,28 @@ body {
 .categories {
     display: flex;
     gap: 12px;
-    padding: 12px 20px;
     overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 77, 109, 0.3) transparent;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .category {
-    padding: 10px 18px;
+    flex: 0 0 auto;
+    padding: 10px 16px;
     border-radius: 25px;
-    border: none;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     cursor: pointer;
-    white-space: nowrap;
-    font-size: 14px;
-    font-weight: 500;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .category:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    color: white;
+    box-shadow: 0 6px 25px rgba(255, 77, 109, 0.4);
 }
 
 .category.active {
@@ -62,32 +57,31 @@ body {
 
 /* Меню */
 .menu {
-    padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); 
+    gap: 20px;
+    padding: 20px; 
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 16px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 64px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(255, 77, 109, 0.3);
 }
 
 .card h3 {
-    margin: 0 0 8px;
+    margin: 12px 0 8px;
     font-size: 16px;
-    font-weight: 600;
-    color: #2c3e50;
 }
 
 .price {
@@ -98,10 +92,10 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+/* Кнопка заказать */
 .order-btn {
     margin-top: 12px;
-    width: 100%;
-    padding: 10px 0;
+    padding: 10px 16px;
     border: none;
     border-radius: 25px;
     background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
@@ -110,7 +104,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
+    box-shadow: 0 6px 25px rgba(255, 77, 109, 0.4);
 }
 
 /* Контролы */
@@ -135,15 +129,14 @@ body {
 }
 
 .controls button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
 }
 
 .controls span {
-    font-weight: 700;
     font-size: 16px;
-    min-width: 24px;
-    text-align: center;
+    font-weight: 600;
+    
 }
 
 
@@ -172,24 +165,19 @@ body {
 }
 /* Корзина */
 .sidebar-cart {
-    font-size: 20px;
-    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
-    color: white;
-    padding: 10px 16px;
-    border-radius: 25px;
-    font-weight: 600;
-    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
-    transition: all 0.3s ease;
+    margin-top: auto;
+    margin-bottom: 20px;
+    
 }
 
 
+/* Карточки вК */
 
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+.cart-item { 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); 
+    gap: 20px;
+    padding: 20px;;
 }
 .cart-controls button {
     width: 36px;
@@ -207,7 +195,7 @@ body {
 
 
 
-.nav {
+.nav { 
     background: none;
     border: none;
     margin: 16px 0;
@@ -225,7 +213,7 @@ body {
     background: rgba(255, 107, 157, 0.1);
 }
 
-.nav.active {
+.nav.active { 
     opacity: 1;
     font-weight: 700;
     color: #c44569;
@@ -233,18 +221,18 @@ body {
     box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
 }
 
-.content {
+.content { 
     flex: 1;
     overflow-y: auto;
     padding-bottom: 20px;
 }
 
-.page {
+.page { 
     display: none;
     padding: 20px;
 }
 
-.page.active {
+.page.active { 
     display: block;
     animation: fadeIn 0.5s ease-in-out;
 }
@@ -256,17 +244,14 @@ body {
 
 /* Форма обратной связи */
 textarea {
-    width: 100%; 
-    height: 140px;
-    padding: 16px; 
-    font-size: 16px; 
+    width: 100%;
+    height: 150px;
+    padding: 12px;
+    border: 2px solid #ddd;
     border-radius: 16px;
-    border: 1px solid rgba(196, 69, 105, 0.2); 
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    resize: vertical; 
+    font-size: 15px;
+    resize: vertical;
     transition: all 0.3s ease;
-    font-family: inherit;
 }
 
 textarea:focus {
@@ -303,7 +288,7 @@ textarea:focus {
     box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
 }
 
-#sendFeedback:hover {
+#sendFeedback:hover { 
     transform: translateY(-2px);
     box-shadow: 0 12px 30px rgba(255, 77, 109, 0.5);
 }
@@ -317,16 +302,15 @@ textarea:focus {
 
 /* Скроллбар для вебкита */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+::-webkit-scrollbar-track { 
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    background: rgba(255, 77, 109, 0.3);
     border-radius: 10px;
 }
 /*---------- внешний вид modal ---------- */
@@ -334,9 +318,12 @@ textarea:focus {
     display: none;
 }
 
-.modal {
+.modal { 
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -346,51 +333,49 @@ textarea:focus {
 .modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
     position: relative;
     background: white;
-    border-radius: 16px;
-    padding: 24px;
+    border-radius: 20px;
+    padding: 30px;
     max-width: 400px;
     width: 90%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    z-index: 201;
     text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content img {
-    width: 80px;
-    margin-bottom: 16px;
+    width: 270px;
+    margin-bottom: 190px;
 }
 
-.modal-footer {
+.modal-footer { 
     margin-top: 20px;
 }
 
 .modal-close {
-    padding: 10px 20px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
     border: none;
-    border-radius: 25px;
-    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 24px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
+    color: #888;
+    transition: color 0.3s ease;
 }
 .cart-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .cart-price {
-    font-weight: bold;
+    font-weight: bold
 }
 
 .cart-sum {
