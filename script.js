@@ -24,29 +24,24 @@ window.openProduct = function(id) {
     currentProduct = products.find(p => p.id === id);
     if (!currentProduct) return;
 
-    document.getElementById('modalImage').src = currentProduct.image;
-    document.getElementById('modalTitle').textContent = currentProduct.name;
-    document.getElementById('modalDescription').textContent = currentProduct.description;
-    document.getElementById('modalPrice').textContent = currentProduct.price + ' ฿';
-    
-    // Устанавливаем обработчики клика для кнопок в модалке
-    document.getElementById('modalPlus').onclick = () => {
-        addToCart(currentProduct.id);
-    };
+    modalImage.src = currentProduct.image;
+    modalTitle.textContent = currentProduct.name;
+    modalDescription.textContent = currentProduct.description;
+    modalPrice.textContent = currentProduct.price + ' ฿';
 
-    document.getElementById('modalMinus').onclick = () => {
-        removeFromCart(currentProduct.id);
-    };
-
-    // Обновляем цифру при открытии
     syncModalCount();
 
-    document.getElementById('productModal').classList.remove('hidden');
+    const modal = document.getElementById('productModal');
+    modal.classList.add('active');
 };
 
-window.closeModal = function() {
-    document.getElementById('productModal').classList.add('hidden');
-    currentProduct = null; // Сбрасываем текущий продукт при закрытии
+
+window.closeModal = function(event) {
+    if (event && event.target !== event.currentTarget) return;
+
+    const modal = document.getElementById('productModal');
+    modal.classList.remove('active');
+    currentProduct = null;
 };
 
 // ---------- СИНХРОНИЗАЦИЯ КОЛИЧЕСТВА ----------
