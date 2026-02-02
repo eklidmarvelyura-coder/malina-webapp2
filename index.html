@@ -30,7 +30,6 @@
                 <span class="nav-label">О нас</span>
             </button>
         </div>
-        
         <div class="sidebar-bottom">
             <div id="cartSum" class="cart-badge">0 ฿</div>
         </div>
@@ -50,23 +49,23 @@
             </section>
 
             <section id="cartPage" class="page-section" style="display:none">
-                <div class="page-header">
-                    <h2>Ваш заказ</h2>
-                </div>
+                <div class="page-header"><h2>Ваш заказ</h2></div>
                 <div id="cartItems" class="cart-list"></div>
                 <div class="cart-checkout-card">
                     <div class="checkout-row">
-                        <span>Итого к оплате:</span>
+                        <span>Итого:</span>
                         <span id="cartTotal" class="total-price">0 ฿</span>
                     </div>
                     <button class="checkout-btn">Заказать</button>
                 </div>
             </section>
 
-            <section id="aboutPage" class="page-section" style="display:none">
-                <div class="glass-info">
-                    <h2>О нас</h2>
-                    <p>Мы готовим самый вкусный кофе в городе с любовью и малиновым настроением.</p>
+            <section id="feedbackPage" class="page-section" style="display:none">
+                <div class="page-header"><h2>Связь</h2></div>
+                <div class="glass-card feedback-form">
+                    <label>Ваше сообщение</label>
+                    <textarea id="feedbackText" placeholder="Напишите нам..."></textarea>
+                    <button id="sendFeedback" class="checkout-btn">Отправить</button>
                 </div>
             </section>
 
@@ -94,7 +93,9 @@
     <div class="modal-backdrop" onclick="closeModal()"></div>
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal()">✕</button>
-        <img id="modalImage" src="" alt="">
+        <div class="modal-img-wrapper">
+            <img id="modalImage" src="" alt="">
+        </div>
         <h2 id="modalTitle"></h2>
         <p id="modalDescription"></p>
         <div class="modal-footer">
