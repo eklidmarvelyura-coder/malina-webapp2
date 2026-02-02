@@ -33,8 +33,22 @@ window.openProduct = function(id) {
 
     const modal = document.getElementById('productModal');
     modal.classList.add('active');
-};
 
+
+    // Устанавливаем обработчики клика для кнопок в модалке
+    document.getElementById('modalPlus').onclick = () => {
+        addToCart(currentProduct.id);
+    };
+
+    document.getElementById('modalMinus').onclick = () => {
+        removeFromCart(currentProduct.id);
+    };
+
+    // Обновляем цифру при открытии
+    syncModalCount();
+
+    document.getElementById('productModal').classList.remove('hidden');
+};
 
 window.closeModal = function(event) {
     if (event && event.target !== event.currentTarget) return;
@@ -43,6 +57,7 @@ window.closeModal = function(event) {
     modal.classList.remove('active');
     currentProduct = null;
 };
+
 
 // ---------- СИНХРОНИЗАЦИЯ КОЛИЧЕСТВА ----------
 function syncModalCount() {
